@@ -61,7 +61,7 @@ public class Name extends JFrame {
 				playerName = textField.getText();
 				System.out.println(playerName + " : "+ Cliente.player);
 				
-				queue q = new queue();
+				game q = new game();
 				q.setVisible(true);
 				q.setLocationRelativeTo(null);
 			}

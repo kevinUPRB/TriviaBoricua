@@ -90,14 +90,14 @@ public class Cliente {
 
 			public void actionPerformed(ActionEvent arg0) {
 				player = getServerAddress();
-				/*
+				
 				try {
 					run();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				*/
+				
 				Name name = new Name();
 				name.setVisible(true);
 				name.setLocationRelativeTo(null);
