@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Server extends Thread {
 	
-	public static int count = 0;
+	public static int playersCount = 0;
 	public Socket connectionSocket;
     public DataInputStream inputStream;
     public DataOutputStream outputStream;
@@ -35,21 +35,31 @@ public class Server extends Thread {
 	        this.outputStream = new DataOutputStream(connectionSocket.getOutputStream()); 
 	        
 	        System.out.println("Run method de server");
-//	        players.add(this.inputStream.readUTF());
-//	        count++;
-	        while(count != 2){
+	        
+	        // Mientras no hayan dos jugadores espera por input
+	        // de algun usuario. Al entrar un input se añade
+	        // a un arreglo
+	        while(playersCount != 2){
 	        	players.add(this.inputStream.readUTF());
-	        	System.out.println(count);
-		        count++;
+	        	System.out.println(playersCount);
+	        	playersCount++;
 	        }
 	        
+	        // Imprimimos para confirmar que hay dos usuarios conectados
+	        // Al servidor
 	        System.out.println("Total Players " + players.size());
 	        
+	        // Por motivos de Debugging imprimimos los nombres
+	        // de los usuarios
 	    	for(String name: players){
 				System.out.println(name);
 			}
-//	        readData();
-//	        count++;
+	    	
+	    	// Devolvemos los jugadores a las pantalla
+	    	
+	    	// Seguimos la logica del juego
+	    	// Conectamos Sockets y Clientes
+	 
 	        
 
     	} catch (IOException e) {
@@ -61,7 +71,7 @@ public class Server extends Thread {
     // Debug
     public void readData() throws IOException{
     	
-    	System.out.println(this.connectionSocket  + "Jugador # " + count + ": " + this.inputStream.readUTF());
+    	System.out.println(this.connectionSocket  + "Jugador # " + playersCount + ": " + this.inputStream.readUTF());
     	
     }
     
