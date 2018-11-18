@@ -10,17 +10,28 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.awt.event.ActionEvent;
 
 public class Name extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private static JTextField textField;
 	public static String playerName;
+	private static BufferedReader in;
+	private static PrintWriter out;
 	/**
 	 * Launch the application.
+	 * @throws IOException 
+	 * @throws UnknownHostException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnknownHostException, IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -30,7 +41,10 @@ public class Name extends JFrame {
 					e.printStackTrace();
 				}
 			}
+			
 		});
+		
+	        
 	}
 
 	/**
@@ -61,7 +75,13 @@ public class Name extends JFrame {
 				playerName = textField.getText();
 				System.out.println(playerName + " : "+ Cliente.player);
 				
-				game q = new game();
+				game q = null;
+				try {
+					q = new game();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				q.setVisible(true);
 				q.setLocationRelativeTo(null);
 			}
